@@ -42,6 +42,11 @@ const Estimator = {
     condition.answer = value
   },
 
+  resetEstimation: (estimation: Estimation):void => {
+    estimation.price = undefined
+    estimation.tax = undefined
+  },
+
   calcEstimation: (estimation: Estimation):void => {
     let price = estimation.defaultPrice
     for(let i=0; i<estimation.conditions.length; i++){
@@ -58,7 +63,9 @@ const Estimator = {
       }
 
       if(typeof condition.answer === 'boolean'){
-        price += condition.priceAddition ?? 0        
+        if(condition.answer){
+          price += condition.priceAddition ?? 0        
+        }
       }else if(typeof condition.answer === 'number'){
         price += (condition.priceAddition ?? 0) * condition.answer
       }
