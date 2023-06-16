@@ -3,7 +3,7 @@ This is a set of functions and types intended to make simple estimation in clien
 
 ## Installation
 ```bash
-npm i @printenv/estimator
+npm i bux_estimator
 ```
 ## Estimator
 Estimator consist of functions to manipulate objects of type Estimation.<br />There are two main types:
