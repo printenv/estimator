@@ -1,5 +1,5 @@
 {
-  "name": "estimator",
+  "name": "@printenv/estimator",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -9,6 +9,7 @@
     "build": "tsc",
     "watch": "tsc --watch"
   },
+  "private": false,
   "keywords": [],
   "author": "",
   "license": "ISC",
