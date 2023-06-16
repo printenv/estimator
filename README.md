@@ -6,19 +6,55 @@ This is a set of functions and types intended to make simple estimation in clien
 npm i @printenv/estimator
 ```
 ## Estimator
-Estimator consist of functions to manipulate objects of type Estimation.
+Estimator consist of functions to manipulate objects of type Estimation.<br />There are two main types:
+- Condition
+- Estimation
+
+### Condition Type
+Estimator can update properties of conditions so that user can meet their needs.
+Condition(s) in Estimation are used in methods of Estimator to calculate its price.
+``` typescript
+export interface Dependency {
+    condition:BoolCondition,
+    onTrue: boolean
+}
+
+  
+interface ConditionTemplate {
+  question: string
+  description?: string
+  priceAddition?: number
+  serviceTitle?: string
+  dependency? : Dependency
+}
+
+export interface BoolCondition extends ConditionTemplate{
+  answer: boolean
+}
+
+export interface NumberCondition extends ConditionTemplate{
+  answer: number
+  min: number
+  max: number
+  priceAddition: number
+}
+
+export type Condition = BoolCondition | NumberCondition
+```
 
 ### Estimation Type
 ``` typescript
- export interface Estimation {
-    title: string,
-    defaultPrice: number,
-    conditions: Conditions,
-    price:number | undefined
-    tax:number | undefined
-    taxPercentage:number
-  }
+export interface Estimation {
+  title: string
+  defaultPrice: number
+  conditions: Conditions
+  addDirectionFee?: (price:number) => number
+  price:number | undefined
+  tax:number | undefined
+  taxPercentage:number
+}
 ```
+
 
 ## Functions defined in Estimator
 

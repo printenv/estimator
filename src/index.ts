@@ -48,6 +48,7 @@ const Estimator = {
   },
 
   calcEstimation: (estimation: Estimation):void => {
+    
     let price = estimation.defaultPrice
     for(let i=0; i<estimation.conditions.length; i++){
       const condition = estimation.conditions[i]
@@ -70,9 +71,15 @@ const Estimator = {
         price += (condition.priceAddition ?? 0) * condition.answer
       }
     }
+
+
+    if(estimation.addDirectionFee){
+      price = estimation.addDirectionFee(price)
+    }
     estimation.price = price
     estimation.tax = Math.floor(price * estimation.taxPercentage)
   }
+
 }
 
 
